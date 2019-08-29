@@ -9,7 +9,9 @@ module.exports = (req, res) => {
       )
       .then(response => {
         if (response.data.score > 0.3) {
-          res.send({ email: process.env.CONTACT_EMAIL });
+          res.json({ email: process.env.CONTACT_EMAIL });
+        } else {
+          res.json({ error: "Are you a bot?" });
         }
       })
       .catch(err => {
